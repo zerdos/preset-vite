@@ -1,75 +1,103 @@
 {
-	"name": "@preact/preset-vite",
-	"version": "2.3.0",
-	"description": "Preact preset for the vite bundler",
-	"main": "./dist/cjs/index.js",
-	"module": "./dist/esm/index.mjs",
-	"exports": {
-		".": {
-			"import": "./dist/esm/index.mjs",
-			"require": "./dist/cjs/index.js"
-		},
-		"./package.json": "./package.json"
-	},
-	"types": "dist/types/index.d.ts",
-	"scripts": {
-		"dev": "vite demo",
-		"dev:build": "vite build demo",
-		"build": "rimraf dist && tsc && tsc -p tsconfig.cjs.json && node tools/postbuild.mjs",
-		"prepublishOnly": "npm run build"
-	},
-	"keywords": [
-		"preact",
-		"vite",
-		"vite-preset",
-		"preset"
-	],
-	"author": "The Preact Team (https://preactjs.com)",
-	"repository": "preactjs/preset-vite",
-	"license": "MIT",
-	"files": [
-		"dist/"
-	],
-	"dependencies": {
-		"@babel/plugin-transform-react-jsx": "^7.14.9",
-		"@babel/plugin-transform-react-jsx-development": "^7.16.7",
-		"@prefresh/vite": "^2.2.6",
-		"@rollup/pluginutils": "^4.1.1",
-		"babel-plugin-transform-hook-names": "^1.0.2",
-		"debug": "^4.3.1",
-		"kolorist": "^1.2.10",
-		"resolve": "^1.20.0"
-	},
-	"peerDependencies": {
-		"@babel/core": "7.x",
-		"vite": "2.x || 3.x"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.15.8",
-		"@types/babel__core": "^7.1.14",
-		"@types/debug": "^4.1.5",
-		"@types/estree": "^0.0.50",
-		"@types/node": "^14.14.33",
-		"@types/resolve": "^1.20.1",
-		"lint-staged": "^10.5.4",
-		"prettier": "^2.2.1",
-		"rimraf": "^3.0.2",
-		"simple-git-hooks": "^2.0.2",
-		"ts-node": "^9.1.1",
-		"typescript": "^4.2.3",
-		"vite": "^2.6.7"
-	},
-	"lint-staged": {
-		"**/*.{js,jsx,ts,tsx,yml}": [
-			"prettier --write"
-		]
-	},
-	"simple-git-hooks": {
-		"pre-commit": "npx lint-staged"
-	},
-	"prettier": {
-		"useTabs": true,
-		"arrowParens": "avoid",
-		"trailingComma": "all"
-	}
+  "name": "@preact/preset-vite",
+  "version": "2.3.0",
+  "description": "Preact preset for the vite bundler",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "dev": "vite demo",
+    "dev:build": "vite build demo",
+    "build": "rimraf dist && tsc && tsc -p tsconfig.cjs.json && node tools/postbuild.mjs",
+    "prepublishOnly": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=bc13116f850a"
+  },
+  "keywords": [
+    "preact",
+    "vite",
+    "vite-preset",
+    "preset"
+  ],
+  "author": {
+    "name": "The Preact Team",
+    "url": "https://preactjs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preactjs/preset-vite.git"
+  },
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.18.6",
+    "@babel/plugin-transform-react-jsx-development": "^7.18.6",
+    "@preact/compat": "^17.1.1",
+    "@prefresh/vite": "^2.2.8",
+    "preact": "10.8.2",
+    "@rollup/pluginutils": "^4.2.1",
+    "babel-plugin-transform-hook-names": "^1.0.2",
+    "debug": "^4.3.4",
+    "kolorist": "^1.5.1",
+    "resolve": "^1.22.1"
+  },
+  "peerDependencies": {
+    "@babel/core": "7.18.6",
+    "vite": "2.9.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-webpack4": "^6.5.9",
+    "@storybook/manager-webpack4": "^6.5.9",
+    "@storybook/preact": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/babel__core": "^7.1.19",
+    "@types/debug": "^4.1.7",
+    "@types/estree": "^0.0.52",
+    "@types/node": "^18.0.0",
+    "@types/resolve": "^1.20.2",
+    "babel-loader": "^8.2.5",
+    "chromatic": "^6.7.0",
+    "core-js": "^3.23.3",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.8.0",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.13"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,yml}": [
+      "prettier --write"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "prettier": {
+    "useTabs": true,
+    "arrowParens": "avoid",
+    "trailingComma": "all"
+  },
+  "bugs": {
+    "url": "https://github.com/preactjs/preset-vite/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/preactjs/preset-vite#readme",
+  "_id": "@preact/preset-vite@2.3.0"
 }
